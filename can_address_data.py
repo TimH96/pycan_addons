@@ -30,12 +30,12 @@ def get_address_data(self: can.Message):
         0x580 + address_data["node_id"] : "TSDO",
         0x600 + address_data["node_id"] : "RSDO",
         0x700 + address_data["node_id"] : "NMT_MONITORING",
-        0x7E4 + address_data["node_id"] : "TLSS",
-        0x7E5 + address_data["node_id"] : "RLSS",
+        0x7E4                           : "TLSS",
+        0x7E5                           : "RLSS"
     }
     address_data["object_type"] = object_map.get(self.arbitration_id, None)
     # retroactively overwrite node id for broadcasted objects
-    if address_data["object_type"] in ["NMT_CONTROL", "FAILSAFE", "SYNC", "TIMESTAMP"]:
+    if address_data["object_type"] in ["NMT_CONTROL", "FAILSAFE", "SYNC", "TIMESTAMP", "TLSS", "RLSS"]:
         address_data["node_id"] = -1
     # return final object
     return address_data
