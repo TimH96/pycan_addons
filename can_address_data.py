@@ -37,7 +37,7 @@ def get_address_data(self: Message) -> dict:
     address_data : dict = {}
     # get node ID
     address_data["node_id"] = (self.arbitration_id & 0b000001111111)
-    # get object type, 
+    # get object type
     address_data["object_type"] = get_object_map(address_data['node_id']).get(self.arbitration_id, None)
     # retroactively overwrite node id for broadcasted objects
     if address_data["object_type"] in ["NMT_CONTROL", "FAILSAFE", "SYNC", "TIMESTAMP", "TLSS", "RLSS"]:
