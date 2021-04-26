@@ -1,5 +1,5 @@
 """
-
+class_bind.py
 """
 
 from can                import Message
